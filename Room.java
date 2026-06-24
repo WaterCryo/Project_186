@@ -1,5 +1,3 @@
-package Group Project;
-
 // Aggregate Object
 
 public class Room {

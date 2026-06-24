@@ -1,5 +1,3 @@
-package Group_Project;
-
 public abstract class Appliance {
     private String applianceID, brand;
     private double powerRating, dailyHoursUsage;

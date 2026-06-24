@@ -1,5 +1,3 @@
-package GroupProject;
-
 public class EnergyLabel {
 
     private double starRating;
