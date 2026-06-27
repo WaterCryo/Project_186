@@ -13,27 +13,60 @@ public abstract class Appliance {
         label = new EnergyLabel(); // Aggregate
     }
 
-    public Appliance(String applianceID, String brand, double powerRating, double dailyHoursUsage, String roomName, int floorlevel, double roomArea) {
+    public Appliance(String applianceID, String brand, double powerRating, double dailyHoursUsage, String roomName, int floorlevel, double roomArea, EnergyLabel label) {
         this.applianceID = applianceID;
         this.brand = brand;
         this.powerRating = powerRating;
         this.dailyHoursUsage = dailyHoursUsage;
-        this.room = new Room(roomName, floorlevel, roomArea);
-        this.label = new EnergyLabel(); // Aggregate
+        room = new Room(roomName, floorlevel, roomArea); // Composite
+        this.label = label;
     }
 
-    public String getApplianceID() {
-        return applianceID;
+    public void setAppliance(String applianceID, String brand, double powerRating, double dailyHoursUsage, String roomName, int floorlevel, double roomArea, EnergyLabel label) {
+        this.applianceID = applianceID;
+        this.brand = brand;
+        this.powerRating = powerRating;
+        this.dailyHoursUsage = dailyHoursUsage;
+        room = new Room(roomName, floorlevel, roomArea); // Composite
+        this.label = label; // Aggregation
     }
-
-    public void setApplianceID(String applianceID) {
+    public void setApplianceID(String applianceID){
         this.applianceID = applianceID;
     }
-
-    public String getBrand() {
-        return brand;
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+    public void setPowerRating(double powerRating){
+        this.powerRating = powerRating;
+    }
+    public void setDailyHoursUsage(double dailyHoursUsage){
+        this.dailyHoursUsage = dailyHoursUsage;
+    }
+    public void setRoom(String name, int level, double area){
+        room.setRoom(name, level, area);
+    }
+    public void setLabel(EnergyLabel label){
+        this.label = label;
     }
 
-    public void setBrand(String brand) {
+    public String getApplianceID(){ return applianceID;}
+    public String getBrand(){ return brand;}
+    public double getPowerRating(){ return powerRating;}
+    public double getDailyHoursUsage(){ return dailyHoursUsage;}
+    public String getName_Room(){ return room.getRoomName();}
+    public int getLevel_Room(){ return room.getFloorLevel();}
+    public double getArea_Room(){ return room.getRoomArea();}
+    public EnergyLabel getLabel(){ return label;}
 
+    @Override
+    public String toString(){
+        return "Appliance{" +
+                "applianceID='" + applianceID + '\'' +
+                ", brand='" + brand + '\'' +
+                ", powerRating=" + powerRating +
+                ", dailyHoursUsage=" + dailyHoursUsage +
+                room.toString() + 
+                ", label=" + label +
+                '}';
+    }
 }
